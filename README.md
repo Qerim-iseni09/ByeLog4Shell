@@ -57,12 +57,18 @@ modifying the plugin registry. There is inherently more risk in this approach as
 corrupted, the JVM may crash on start.
 
 The choice of which mode to use is selected by the flag you Pass on The Script
-ByeLog4Shell By Qerim Iseni09
-Usage:  ByeLog4Shell -h | --help | Display The Help Page
+`ByeLog4Shell By Qerim Iseni09`
+
+`Usage:  ByeLog4Shell -h | --help | Display The Help Page`
+
 `       ByeLog4Shell -i | --install | Installs ByeLog4Shell and its Dependencies`
+
 `       ByeLog4Shell -rp | --run-persistent | Runs ByeLog4Shell in Persistent mode (Keep in mind to first Pass --install or it doesnt Work)`
+
 `       ByeLog4Shell -rt | --run-transient | Runs ByeLog4Shell in Transient mode (Keep in mind to first Pass --install or it doesnt Work)`
+
 `       ByeLog4Shell -irt | --install-run-transient | Installs and Runs ByeLog4Shell in Transient mode`
+
 `       ByeLog4Shell -irp | --install-run-persistent | Installs and Runs ByeLog4Shell in Persistent mode`
 
 ## How to use
@@ -70,8 +76,10 @@ Usage:  ByeLog4Shell -h | --help | Display The Help Page
 1. Download this repository and Run the ByeLog4Shell Script with the --install Flag
 
 2. `git clone https://github.com/cybereason/ByeLog4Shell.git`
+
+3. `cd ByeLog4Shell`
   
-3. `bash ByeLog4Shell --install`
+4. `bash ByeLog4Shell --install`
 
 
 
