@@ -46,7 +46,7 @@ remove the `JndILookup` class, and modify the PluginCache to completely remove t
 restarts the `JndiLookup` class cannot be found and log4j will not support for JNDI
 
 ## Transient vs Persistent mode
-This package generates two flavors of the payload - Transient and Persistent. 
+This Script generates two flavors of the payload - Transient and Persistent. 
 In Transient mode, the payload modifies
 the current running JVM. The payload is very delicate to just touch the logger context and configuration. We thus
 believe the risk of using the Transient mode are very low on production environments.
@@ -60,7 +60,7 @@ The choice of which mode to use is selected by the flag you Pass on The Script
 
 ## How to use
 
-1. Download/Clone this repository and Run the ByeLog4Shell Script with the --install Flag
+1. Download/Clone this repository and Run the ByeLog4Shell Script with the `--install` Flag
 
 2. `git clone https://github.com/Qerim-iseni09/ByeLog4Shell.git`
 
@@ -68,7 +68,7 @@ The choice of which mode to use is selected by the flag you Pass on The Script
   
 4. `bash ByeLog4Shell --install`
 
-5. Run `bash ByeLog4Shell --help` and "Play" around and close the Vulnerability!
+5. Run `bash ByeLog4Shell --help` and "Play" around and close Vulnerabilities!
 
 Happy Hacking for the Good
 
