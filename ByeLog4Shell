@@ -8,8 +8,8 @@ die() {
 usage() {                                 
   echo "Usage:  $0 -h | --help | Display This Usage Page
   	$0 -i | --install | Install ByeLog4Shell and its Dependencies
-        $0 -rp | --run-persistent | Run ByeLog4Shell in Persistent mode (Keep in mind to first Install the Script or it doesnt Work)
-        $0 -rt | --run-transient | Run ByeLog4Shell in Transient mode (Keep in mind to first Install the Script or it doesnt Work)
+        $0 -rp | --run-persistent | Run ByeLog4Shell in Persistent mode
+        $0 -rt | --run-transient | Run ByeLog4Shell in Transient mode
         $0 -irt | --install-run-transient | Install and run ByeLog4Shell in Transient mode
         $0 -irp | --install-run-persistent | Install and run ByeLog4Shell in Persistent mode" 1>&2 
 }
