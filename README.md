@@ -11,7 +11,7 @@ The Log4Shell vulnerability CVE-2021-44228 was published on 12/9/2021 and allows
 
 
 While the best mitigation against these vulnerabilities is to patch log4j to
-~~2.15.0~~2.17.0 and above, in Log4j version (>=2.10) this behavior can be partially mitigated by
+2.17.0 and above, in Log4j version (>=2.10) this behavior can be partially mitigated by
 setting system property `log4j2.formatMsgNoLookups` to `true` or by removing
 the JndiLookup class from the classpath. 
 
