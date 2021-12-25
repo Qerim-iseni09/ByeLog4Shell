@@ -60,9 +60,9 @@ The choice of which mode to use is selected by the flag you Pass on The Script
 
 ## How to use
 
-1. Download this repository and Run the ByeLog4Shell Script with the --install Flag
+1. Download/Clone this repository and Run the ByeLog4Shell Script with the --install Flag
 
-2. `git clone https://github.com/cybereason/ByeLog4Shell.git`
+2. `git clone https://github.com/Qerim-iseni09/ByeLog4Shell.git`
 
 3. `cd ByeLog4Shell`
   
