@@ -72,13 +72,15 @@ The choice of which mode to use is selected by the flag you Pass on The Script
 
 Happy Hacking for the Good
 
+PS: The Script was only tested on Debian OS's (Kali Linux, Debian) and only work with those OS's that have apt. But Later there will get more Support.
+
 
 ## DISCLAIMER: 
 The code described in this advisory (the “Code”) is provided on an “as is” and
 “as available” basis may contain bugs, errors and other defects. You are
 advised to safeguard important data and to use caution. By using this Code, you
 agree that Qerim Iseni09 shall have no liability to you for any claims in
-connection with the Code. Cybereason disclaims any liability for any direct,
+connection with the Code. Qerim Iseni09 disclaims any liability for any direct,
 indirect, incidental, punitive, exemplary, special or consequential damages,
 even if Qerim Iseni09 or its related parties are advised of the possibility of
 such damages. Qerim Iseni09 undertakes no duty to update the Code or this
