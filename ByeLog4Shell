@@ -18,6 +18,7 @@ exit_abnormal() {
 }
 installb() {
 echo Installing Dependencies for ByeLog4Shell
+sudo apt-get update
 sudo apt install -y maven netcat-traditional gnome-terminal python3 unzip
 unzip ByeLog4Shell.zip
 cd ByeLog4ShellScanner
