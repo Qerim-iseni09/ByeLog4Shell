@@ -59,10 +59,10 @@ The choice of which mode to use is selected by the flag you Pass on The Script
 
 ## What is an VTE or VSS?
 
-# VTE
+### VTE
 An VTE is an Penetration Testing Environment that is Isolated by the Help of Docker and is Vulnerable to Log4Shell / CVE-2021-44228 attacks so that you can Learn how to Exploit it and Secure it with the ByeLog4Shell Vulnerability Fix. And Its Secure for your System and you cant get Hacked cause its an Isolated Container and is Like an Other thing on your PC.
 
-# VSS
+### VSS
 An VSS is an Fast and Accurate Log4Shell Vulnerability Scanner made for Faster Scanning and Accurate Scanning. Its an Script that Scans for the Log4Shell Vulnerability.
 
 ## How to use
