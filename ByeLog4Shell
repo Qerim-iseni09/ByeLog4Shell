@@ -49,7 +49,6 @@ echo "Installing Dependencies for ByeLog4Shell"
 sudo apt-get update
 sudo apt install -y maven gnome-terminal unzip
 unzip ByeLog4Shell.zip
-cd ..
 cd ByeLog4ShellVaccinator
 mvn package
 cd ..
