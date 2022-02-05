@@ -9,7 +9,6 @@ managed by the Apache Software Foundation (From here on just "Apache") is pervas
 web servers in the world—making this a potentially catastrophic flaw.
 The Log4Shell vulnerability CVE-2021-44228 was published on 12/9/2021 and allows remote code execution on vulnerable servers.
 
-
 While the best mitigation against these vulnerabilities is to patch log4j to
 2.17.0 and above, in Log4j version (>=2.10) this behavior can be partially mitigated by
 setting system property `log4j2.formatMsgNoLookups` to `true` or by removing
@@ -58,17 +57,25 @@ corrupted, the JVM may crash on start.
 
 The choice of which mode to use is selected by the flag you Pass on The Script
 
+## What is an VTE or VSS?
+
+# VTE
+An VTE is an Penetration Testing Environment that is Isolated by the Help of Docker and is Vulnerable to Log4Shell / CVE-2021-44228 attacks so that you can Learn how to Exploit it and Secure it with the ByeLog4Shell Vulnerability Fix. And Its Secure for your System and you cant get Hacked cause its an Isolated Container and is Like an Other thing on your PC.
+
+# VSS
+An VSS is an Fast and Accurate Log4Shell Vulnerability Scanner made for Faster Scanning and Accurate Scanning. Its an Script that Scans for the Log4Shell Vulnerability.
+
 ## How to use
 
-1. Download/Clone this repository and Run the ByeLog4Shell Script with the `--install` Flag
+Download/Clone this repository and Run the ByeLog4Shell Script with the `--install` Flag or if you want Extra Features like Vulnerability Testing Environment (VTE) or Vulnerablity Scanning Script (VSS) then run it with the `--install-all` Flag
 
-2. `git clone https://github.com/Qerim-iseni09/ByeLog4Shell.git`
+1. `git clone https://github.com/Qerim-iseni09/ByeLog4Shell.git`
 
-3. `cd ByeLog4Shell`
+2. `cd ByeLog4Shell`
   
-4. `bash ByeLog4Shell --install`
+3. `bash ByeLog4Shell --install` or if you want Extra Features like VTE and VS then run `bash ByeLog4Shell --install-all`
 
-5. Run `bash ByeLog4Shell --help` and "Play" around and close Vulnerabilities!
+4. Run `bash ByeLog4Shell --help` and "Play" around and close Vulnerabilities!
 
 Happy Hacking for the Good
 
