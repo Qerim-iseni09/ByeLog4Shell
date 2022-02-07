@@ -67,19 +67,21 @@ An VSS is an Fast and Accurate Log4Shell Vulnerability Scanner made for Faster S
 
 ## How to use
 
-Download/Clone this repository and Run the ByeLog4Shell Script with the `--install` Flag or if you want Extra Features like Vulnerability Testing Environment ([VTE](#VTE)) or Vulnerablity Scanning Script ([VSS](#VSS)) then run it with the `--install-all` Flag
+### For Linux Distros:
 
-1. `git clone https://github.com/Qerim-iseni09/ByeLog4Shell.git`
+Download the Newest Release named Bye4Shell-X.X.X-(Your Package Manager), Extract the Zip File and then Run the ByeLog4Shell Script with the `--install` Flag or if you want Extra Features like Vulnerability Testing Environment ([VTE](#VTE)) and Vulnerablity Scanning Script ([VSS](#VSS)) then run it with the `--install-all` Flag
 
-2. `cd ByeLog4Shell`
+1. ``cd ByeLog4Shell```
+
+2. ``chmod +x ByeLog4Shell``
   
-3. `bash ByeLog4Shell --install` or if you want Extra Features like [VTE](#VTE) and [VSS](#VSS) then run `bash ByeLog4Shell --install-all`
+3. ``./ByeLog4Shell --install` or if you want Extra Features like [VTE](#VTE) and [VSS](#VSS) then run `bash ByeLog4Shell --install-all``
 
-4. Run `bash ByeLog4Shell --help` and "Play" around and close Vulnerabilities!
+4. Run ``bash ByeLog4Shell --help`` and "Play" around and close Vulnerabilities!
 
-Happy [Hacking](#DISCLAIMER) for the Good
+Happy Hacking for the Good
 
-PS: The Script was only tested on Debian OS's (Kali Linux, Debian) and only work with those OS's that have apt. But Later there will get more Support.
+PS: The Script was only tested on Debian OS's (Kali Linux, Debian etc.), if something does not Work, Create an Issue with all the Logs (They are in the Folder Named Logs) an Tell me on Whitch OS you were on when it failed. Thx!
 
 
 ## DISCLAIMER: 
