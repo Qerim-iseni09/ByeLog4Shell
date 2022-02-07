@@ -9,4 +9,5 @@
 
 ## Reporting a Vulnerability
 
-Show us How you Exploited and found the Vulnerability by Writing it Somewhere in
+Email us How you Exploited and found the Vulnerability by Writing it how you you did it and how we can replicate it
+E-Mail: qerimiseni0007@gmail.com
