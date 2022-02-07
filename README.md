@@ -71,17 +71,17 @@ An VSS is an Fast and Accurate Log4Shell Vulnerability Scanner made for Faster S
 
 Download the Newest Release named Bye4Shell-X.X.X-(Your Package Manager), Extract the Zip File and then Run the ByeLog4Shell Script with the `--install` Flag or if you want Extra Features like Vulnerability Testing Environment ([VTE](#VTE)) and Vulnerablity Scanning Script ([VSS](#VSS)) then run it with the `--install-all` Flag
 
-1. ``cd ByeLog4Shell```
+1. ``cd ByeLog4Shell``
 
 2. ``chmod +x ByeLog4Shell``
   
-3. ``./ByeLog4Shell --install` or if you want Extra Features like [VTE](#VTE) and [VSS](#VSS) then run `bash ByeLog4Shell --install-all``
+3. ``./ByeLog4Shell --install`` or if you want Extra Features like [VTE](#VTE) and [VSS](#VSS) then run ``bash ByeLog4Shell --install-all``
 
-4. Run ``bash ByeLog4Shell --help`` and "Play" around and close Vulnerabilities!
+4. Run ``bash ByeLog4Shell`` --help`` and "Play" around and close Vulnerabilities!
 
 Happy Hacking for the Good
 
-PS: The Script was only tested on Debian OS's (Kali Linux, Debian etc.), if something does not Work, Create an Issue with all the Logs (They are in the Folder Named Logs) an Tell me on Whitch OS you were on when it failed. Thx!
+PS: The Script was only tested on Debian OS's (Kali Linux, Debian etc.), if something does not Work, Create an Issue with all the Logs (They are in the Folder Named Logs), Outputs and Whitch OS you were on when it failed and provide Something better pls. Thx!
 
 
 ## DISCLAIMER: 
