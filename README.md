@@ -77,7 +77,7 @@ Download the Newest Release named Bye4Shell-X.X.X-(Your Package Manager), Extrac
   
 3. ``./ByeLog4Shell --install`` or if you want Extra Features like [VTE](#VTE) and [VSS](#VSS) then run ``./ByeLog4Shell --install-all``
 
-4. Run ``bash ByeLog4Shell`` --help`` and "Play" around and close Vulnerabilities!
+4. Run ``./ByeLog4Shell --help`` and "Play" around and close Vulnerabilities!
 
 Happy Hacking for the Good
 
